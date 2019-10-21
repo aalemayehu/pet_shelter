@@ -25,12 +25,6 @@ class OnePet extends Component {
             .then(res => this.props.history.push("/"))
             .catch(err => console.log(err));
         }
-    increase= (_id,e) => {
-        e.preventDefault();
-        console.log(this.state);
-        // var id = this.state.pet._id;
-        // var count= this.state.pet._id.count;
-    }
     render (){
         return (
             <> 
@@ -39,7 +33,7 @@ class OnePet extends Component {
                 <h3 className="display-4">Details about {this.state.pet.Name} </h3>
                 <p className="lead">Description: {this.state.pet.Description}</p>
                 <p className="lead">Pet type: {this.state.pet.Type}</p>
-                <ul className="lead">Skills:
+                Skills:<ul className="lead">
                     <ul>{this.state.pet.Skill_1} </ul>
                     <ul>{this.state.pet.Skill_2}</ul>
                     <ul>{this.state.pet.Skill_3}</ul>
@@ -49,9 +43,6 @@ class OnePet extends Component {
                     <button>Adopt this pet</button>
                 </a>
                 &nbsp;&nbsp;
-                <a href = " " onClick = {this.increase.bind(this, this.state.pet._id)}>
-                    <button >Like this Pet</button>
-                </a>
             </div>
             </>
         );

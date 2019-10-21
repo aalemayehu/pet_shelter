@@ -3,7 +3,7 @@ const Pet = mongoose.model("Pet");
 
 class PetController {
     GetAll(req, res) {
-        Pet.find()
+        Pet.find().sort('Type').exec()
             .then(pets => res.json(pets))
             .catch (err => res.json(err));
     }
@@ -19,7 +19,7 @@ class PetController {
             .catch (err => res.json(err));
     }
     Update(req, res) {
-        Pet.findOneAndUpdate({_id: req.params._id}, req.body, {runValidators:true})
+        Pet.findOneAndUpdate({_id: req.params._id}, req.body,{uniqueValidator:false})
             .then(() => res.json ({status:"ok"}))
             .catch (err => res.json(err));
     }
@@ -46,3 +46,4 @@ module.exports = new PetController();
 //     })
 // .then(saveResult => res.json(saveResult))
 // .catch(err => res.json(err));
+// {runValidators:true}, {uniqueValidator:false}

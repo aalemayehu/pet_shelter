@@ -6,7 +6,7 @@ const PetSchema = new mongoose.Schema ({
         type:String,
         required: [true, "Name is required"],
         minlength: [3, "Name must be at least 3 characters long"],
-        unique:true,
+        unique:[true,"Name is required"]
     },
     Type: {
         type:String,
@@ -27,9 +27,6 @@ const PetSchema = new mongoose.Schema ({
     Skill_3: {
         type:String,
     },
-    Count:{
-        type:Number,
-    }
 }, {timestamps:true});
 
 PetSchema.plugin(uniqueValidator);
